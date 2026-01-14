@@ -22,7 +22,7 @@ The goal was to build a robust **ETL pipeline** capable of processing massive co
 ## ⚙️ How to Run
 
 1. **Clone the repository:**
-   git clone [https://github.com/YOUR_USERNAME/openlibrary-data-analysis.git](https://github.com/YOUR_USERNAME/openlibrary-data-analysis.git)
+   git clone [https://github.com/amaravella/openlibrary-data-analysis.git](https://github.com/YOUR_USERNAME/openlibrary-data-analysis.git)
    cd openlibrary-data-analysis
 2. Install dependencies:
     pip install duckdb pandas matplotlib
@@ -31,7 +31,7 @@ The goal was to build a robust **ETL pipeline** capable of processing massive co
 
 4. Run the pipeline:
     Bash
-    python scripts/big_join_final.py
+    python etl_pipeline.py
 
 
 📈 Results
