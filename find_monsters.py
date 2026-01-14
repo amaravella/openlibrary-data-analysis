@@ -2,17 +2,17 @@ import duckdb
 import time
 
 con = duckdb.connect()
-filename = 'ol_dump_editions_2025-12-31.txt.gz' # Проверь имя файла!
+filename = 'ol_dump_editions_2025-12-31.txt.gz' 
 
-print("🦖 Выпускаем кракена... Ищем самые тяжелые записи.")
-print("Придется прочитать весь файл, так что подожди минуту.")
+print("🦖 Releasing the Kraken... Searching for the heaviest records.")
+print("Reading the entire file, this might take a minute.")
 start = time.time()
 
-# SQL ЗАПРОС
-# 1. length(column4) - считает количество символов.
-# 2. Делим на 1024*1024, чтобы получить Мегабайты.
-# 3. substr(column4, 1, 500) - берем первые 500 букв, чтобы понять, что там,
-#    но не завалить терминал миллионами символов.
+# SQL QUERY
+# 1. length(column4) - calculates character count.
+# 2. Divide by 1024*1024 to convert to megabytes.
+# 3. substr(column4, 1, 200) - take the first 200 characters to see the content,
+#    without overloading the terminal.
 
 query = f"""
 SELECT 
@@ -27,7 +27,7 @@ FROM read_csv(
     quote='', 
     escape='', 
     all_varchar=True, 
-    max_line_size=20000000 -- Ставим 20 МБ, чтобы точно влезло всё
+    max_line_size=20000000 -- Setting to 20MB to ensure everything fits
 ) 
 ORDER BY length(column4) DESC
 LIMIT 5;
@@ -36,17 +36,18 @@ LIMIT 5;
 df = con.execute(query).df()
 end = time.time()
 
-print(f"✅ Найдено за {end - start:.4f} сек.")
-print("\n--- ТОП-5 САМЫХ ТЯЖЕЛЫХ КНИГ ---")
+print(f"✅ Found in {end - start:.4f} sec.")
+print("\n--- TOP 5 HEAVIEST RECORDS ---")
 print(df)
 
-# Если хочешь увидеть "внутренности" чемпиона полностью:
+# If you want to see the champion's "insides" completely
 top_content_query = f"""
 SELECT column4 
 FROM read_csv('{filename}', header=False, delim='\\t', quote='', escape='', all_varchar=True, max_line_size=20000000) 
 ORDER BY length(column4) DESC 
 LIMIT 1
 """
-print("\n--- ЧТО ВНУТРИ ЧЕМПИОНА (Первые 1000 символов) ---")
+
+print("\n--- INSIDE THE CHAMPION (First 1000 characters) ---")
 champion = con.execute(top_content_query).fetchone()[0]
-print(champion[:1000] + "...\n[ОСТАЛЬНОЕ ОБРЕЗАНО]")
+print(champion[:1000] + "...\n[REMAINDER TRUNCATED]")
