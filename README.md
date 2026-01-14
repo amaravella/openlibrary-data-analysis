@@ -43,4 +43,5 @@ python etl_pipeline.py
 📈 Results
 The analysis reveals an "Information Explosion" starting in the late 20th century, coinciding with the digital revolution and the rise of the internet.
 
+
 ![Book Publication Trend](history_chart.png)
