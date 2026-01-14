@@ -35,7 +35,7 @@ pip install duckdb pandas matplotlib
 3. **Download Data:**
    Download `ol_dump_works.txt.gz` and `ol_dump_editions.txt.gz` from the [Open Library Data Dumps](https://openlibrary.org/developers/dumps).
 
-
+![Book Publication Trend](history_chart.png)
 4. **Run the pipeline:**
 ```Bash
 python etl_pipeline.py
