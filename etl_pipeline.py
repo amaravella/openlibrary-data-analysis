@@ -3,14 +3,14 @@ import time
 
 con = duckdb.connect()
 
-# ПРОВЕРЬ ИМЕНА ФАЙЛОВ
+# FILE NAMES
 file_works = 'ol_dump_works_2025-12-31.txt.gz' 
 file_editions = 'ol_dump_editions_2025-12-31.txt.gz' 
 
-print("🚀 Попытка №4: Исправляем колонку с ключом...")
+print("🚀 Attempt #4: Fixing the key column...")
 start = time.time()
 
-# 1. ТАБЛИЦА ИЗДАНИЙ (Тут все было супер)
+# 1. EDITIONS TABLE
 editions_query = f"""
 SELECT 
     json_extract_string(column4, '$.works[0].key') AS work_key,
@@ -27,9 +27,7 @@ FROM read_csv(
 WHERE work_key IS NOT NULL AND year IS NOT NULL
 """
 
-# 2. ТАБЛИЦА ТРУДОВ (ИСПРАВЛЕНИЕ ЗДЕСЬ)
-# Было: column2 (это ревизия)
-# Стало: column1 (это ключ!)
+# 2. WORKS TABLE
 works_query = f"""
 SELECT 
     column1 AS work_key, 
@@ -45,7 +43,7 @@ FROM read_csv(
 )
 """
 
-# 3. JOIN (Без изменений)
+# 3. JOIN 
 final_query = f"""
 WITH 
     raw_editions AS ({editions_query}),
@@ -61,15 +59,15 @@ ORDER BY e.year DESC
 """
 
 try:
-    print("⏳ Считаем...")
+    print("⏳ Processing data...")
     df = con.execute(final_query).df()
     end = time.time()
 
-    print(f"✅ АБСОЛЮТНАЯ ПОБЕДА! Время: {end - start:.4f} сек.")
+    print(f"✅ SUCCESS! Execution time: {end - start:.4f} sec.")
     print(df.head(20))
     
     df.to_csv("final_timeline.csv", index=False)
-    print("📄 График сохранен в final_timeline.csv")
+    print("📄 Results saved to final_timeline.csv")
 
 except Exception as e:
-    print("❌ Ошибка:", e)
+    print("❌ Error:", e)
