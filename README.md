@@ -22,10 +22,10 @@ The goal was to build a robust **ETL pipeline** capable of processing massive co
 ## ⚙️ How to Run
 
 1. **Clone the repository:**
-    ```bash
-   git clone https://github.com/amaravella/openlibrary-data-analysis.git
-   cd openlibrary-data-analysis
-   ```
+```bash
+git clone https://github.com/amaravella/openlibrary-data-analysis.git
+cd openlibrary-data-analysis
+```
    
 2. **Install dependencies:**
 ```Bash
