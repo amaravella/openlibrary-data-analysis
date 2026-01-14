@@ -25,6 +25,7 @@ The goal was to build a robust **ETL pipeline** capable of processing massive co
    ```bash
    git clone https://github.com/amaravella/openlibrary-data-analysis.git
    cd openlibrary-data-analysis
+   
 2. Install dependencies:
 
 ```Bash
