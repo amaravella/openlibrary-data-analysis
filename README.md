@@ -27,11 +27,12 @@ The goal was to build a robust **ETL pipeline** capable of processing massive co
    cd openlibrary-data-analysis
    
 2. Install dependencies:
-
 ```Bash
 pip install duckdb pandas matplotlib
 
+
 3. Download Data: Download ol_dump_works.txt.gz and ol_dump_editions.txt.gz from the Open Library Data Dumps.
+
 
 4. Run the pipeline:
 ```Bash
