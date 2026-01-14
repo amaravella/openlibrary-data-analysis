@@ -22,17 +22,24 @@ The goal was to build a robust **ETL pipeline** capable of processing massive co
 ## ⚙️ How to Run
 
 1. **Clone the repository:**
-   git clone [https://github.com/YOUR_USERNAME/openlibrary-data-analysis.git](https://github.com/YOUR_USERNAME/openlibrary-data-analysis.git)
-   cd openlibrary-data-analysis
-2. Install dependencies:
-    pip install duckdb pandas matplotlib
+```bash
+git clone https://github.com/amaravella/openlibrary-data-analysis.git
+cd openlibrary-data-analysis
+```
+   
+2. **Install dependencies:**
+```Bash
+pip install duckdb pandas matplotlib
+```
 
-3. Download Data: Download ol_dump_works.txt.gz and ol_dump_editions.txt.gz from the Open Library Data Dumps.
+3. **Download Data:**
+   Download `ol_dump_works.txt.gz` and `ol_dump_editions.txt.gz` from the [Open Library Data Dumps](https://openlibrary.org/developers/dumps).
 
-4. Run the pipeline:
-    Bash
-    python scripts/big_join_final.py
 
+4. **Run the pipeline:**
+```Bash
+python etl_pipeline.py
+```
 
 📈 Results
 The analysis reveals an "Information Explosion" starting in the late 20th century, coinciding with the digital revolution and the rise of the internet.
