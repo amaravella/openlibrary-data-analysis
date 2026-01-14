@@ -35,7 +35,6 @@ pip install duckdb pandas matplotlib
 3. **Download Data:**
    Download `ol_dump_works.txt.gz` and `ol_dump_editions.txt.gz` from the [Open Library Data Dumps](https://openlibrary.org/developers/dumps).
 
-![Book Publication Trend](history_chart.png)
 4. **Run the pipeline:**
 ```Bash
 python etl_pipeline.py
@@ -43,3 +42,5 @@ python etl_pipeline.py
 
 📈 Results
 The analysis reveals an "Information Explosion" starting in the late 20th century, coinciding with the digital revolution and the rise of the internet.
+
+![Book Publication Trend](history_chart.png)
